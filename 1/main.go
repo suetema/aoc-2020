@@ -45,9 +45,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("readLines: %s", err)
 	}
-	for i, line := range lines {
-		fmt.Println(i, line)
-	}
 
 	fmt.Println(compute(lines, target))
 }
