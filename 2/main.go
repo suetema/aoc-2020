@@ -16,7 +16,7 @@ type Password struct {
 
 func main() {
 	var passwords []Password
-	var correct int
+	var correct2dot1, correct2dot2 int
 	file, _ := os.Open("input")
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
@@ -36,12 +36,21 @@ func main() {
 		passwords = append(passwords, password)
 	}
 
+	// 2.1
 	for _, p := range passwords {
 		count := strings.Count(p.password, p.char)
 		if count >= p.min && count <= p.max {
-			correct++
+			correct2dot1++
 		}
-
 	}
-	fmt.Println(correct)
+
+	// 2.2
+	for _, p := range passwords {
+		if (string(p.password[p.min-1]) == p.char) != (string(p.password[p.max-1]) == p.char) {
+			correct2dot2++
+		}
+	}
+
+	fmt.Println(correct2dot1)
+	fmt.Println(correct2dot2)
 }
